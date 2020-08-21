@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "132733082278",
+    "firebase_url": "https://double-zenith-280321.firebaseio.com",
+    "project_id": "double-zenith-280321",
+    "storage_bucket": "double-zenith-280321.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132733082278:android:80e008cceb90dbb9e67267",
+        "android_client_info": {
+          "package_name": "com.elshafey.googlemaps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132733082278-b3bn6dmaghf74qgk3vgqt9ll3o0hlavs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9mzySmlm0mSpQzm-8bjpD5ud7vY8rTyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132733082278-b3bn6dmaghf74qgk3vgqt9ll3o0hlavs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
