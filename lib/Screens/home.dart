@@ -786,6 +786,7 @@ class _homeState extends State<home> {
                                     width: MediaQuery.of(context).size.width,
                                     height: MediaQuery.of(context).size.height,
                                     child: GoogleMap(
+
                                       mapType: MapType.normal,
                                       markers: markers,
                                       onMapCreated: _OnMapCreated,
@@ -872,8 +873,6 @@ class _homeState extends State<home> {
                                         child: Opacity(
                                           opacity:
                                               counter == null ? 0 : counter,
-// Try reading data from the counter key. If it doesn't exist, return 0.
-//              final counter = prefs.getInt('counter') ?? 0;, //userprovider.buttonOpacity,
                                           child: AvatarGlow(
                                             glowColor: Colors.black,
                                             endRadius: 49,
@@ -889,6 +888,7 @@ class _homeState extends State<home> {
                                                     child: AutoSizeText(
                                                       "  Add    place",
                                                       softWrap: true,
+                                                      maxLines: 2,
                                                     ),
                                                   ),
                                                 ),
@@ -904,16 +904,22 @@ class _homeState extends State<home> {
                                         ),
                                       ),
 
-                                    AvatarGlow(
-                                      animate: userprovider.addplace == false
-                                          ? true
-                                          : false,
-                                      endRadius: 90,
-                                      glowColor: Colors.black,
-                                      child: FloatingActionButton.extended(
-                                        heroTag: 'btn2',
-                                        label: Text("Choose your fav Places"),
-                                        backgroundColor: Colors.black26,
+                                    IgnorePointer(
+                                      ignoring: true,
+                                      child: Opacity(
+                                        opacity: counter == null ? 1 : counter==1?0:1,
+                                        child: AvatarGlow(
+                                          animate: userprovider.addplace == false
+                                              ? true
+                                              : false,
+                                          endRadius: 90,
+                                          glowColor: Colors.black,
+                                          child: FloatingActionButton.extended(
+                                            heroTag: 'btn2',
+                                            label: Text("Rank those Places"),
+                                            backgroundColor: Colors.black26,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ],

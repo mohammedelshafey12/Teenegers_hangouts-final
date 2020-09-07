@@ -33,8 +33,15 @@ class _addQuestionsState extends State<addQuestions> {
   void initState() {
     currentindex = 0;
 
-
+getUser();
   }
+  getUser()async{
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    setState(() {
+      user1 = user;
+    });
+  }
+  FirebaseUser user1;
 
   PageController controller = PageController(initialPage: currentindex);
   var scrolldirection = Axis.horizontal;
@@ -158,7 +165,7 @@ class _addQuestionsState extends State<addQuestions> {
                                 answer6: "day of week",
                                 answer7: "seasonal" ,
                                 answer8:"others" ,
-                                question3: '••	With Whom do you go with and meet their? ',
+                                question3: '••With Whom do you go with and meet their? ',
                                 answer9: "Friends",
                                 answer10: "family",
                                 answer11: "Alone ",
@@ -230,7 +237,7 @@ class _addQuestionsState extends State<addQuestions> {
                                       ,question6,question7,question8,question9,question10,question11,question12,question13,imojeRate,value4
                                       ,value5,value6,value7,value8,value9,value10,value11,value12,value13));
                                   Provider.of<UserProvider>(context,listen: false).setScores((value*10));
-                                  store.updateScore(user.uid, (value*10));
+                                  store.updateScore(user1.uid, (value*10));
                                   controller.dispose();
                                   setState(() {
                                     currentindex=-1;
@@ -244,8 +251,8 @@ class _addQuestionsState extends State<addQuestions> {
                                 }
                               }
                             if(currentindex==0&&question1!=null&&question2!=null&&question3!=null
-                                ||currentindex==1&&question4!=null&&question5!=null&&question6!=null||currentindex==2&&question7!=null&&question8!=null&&question9!=null
-                                ||currentindex==3&&question10!=null&&question11!=null&&question12!=null||currentindex==4&&question13!=null&&imojeRate!=null)  {
+                                ||currentindex==1&&question4!=null&&question5!=null&&question6!=null&&value4!=0&&value5!=0&&value6!=0||currentindex==2&&question7!=null&&question8!=null&&question9!=null&&value7!=0&&value8!=0&&value9!=0
+                                ||currentindex==3&&question10!=null&&question11!=null&&question12!=null&&value10!=0&&value11!=0&&value12!=0||currentindex==4&&question13!=null&&imojeRate!=null&&value13!=0)  {
                               setState(() {
                                 currentindex++;
                                 if (value < 5) {

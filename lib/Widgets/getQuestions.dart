@@ -298,9 +298,10 @@ class _getQuestionsState extends State<getQuestions> {
                       child: Column(
                         children: <Widget>[
                           Center(
-                            child: Text(
-                              widget.question2,
+                            child: AutoSizeText(
+                              widget.question3,
                               style: TextStyle(fontFamily: 'font'),
+                              maxLines: 1,
                             ),
                           ),
                           Row(
@@ -406,8 +407,6 @@ class _getQuestionsState extends State<getQuestions> {
             ],
           ),
         ));
-
-
   }
 
   void changeval(int val) {

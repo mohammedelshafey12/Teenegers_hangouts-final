@@ -84,12 +84,12 @@ class _getLocationRateImojeState extends State<getLocationRateImoje> {
                         child: ReviewSlider(
 
 
-                            options: ['none','Strongly disagree','Disagree','agree','Strongly agree'],
+                            options: ['Strongly disagree','Disagree','none','agree','Strongly agree'],
                             onChange: (index) {
 
-                                index==0?addflagprovider.question13Result("None"):index==1?addflagprovider.question13Result("Strongly disagree"):index==2?addflagprovider.question13Result("Disagree")
+                                index==0?addflagprovider.question13Result("Strongly disagree"):index==1?addflagprovider.question13Result("Disagree"):index==2?addflagprovider.question13Result("none")
                                     :index==3?addflagprovider.question13Result("agree"):index==4?addflagprovider.question13Result("Strongly agree"):"";
-                                index==0?addflagprovider.value13Result(0):index==1?addflagprovider.value13Result(1):index==2?addflagprovider.value13Result(2)
+                                index==0?addflagprovider.value13Result(1):index==1?addflagprovider.value13Result(2):index==2?addflagprovider.value13Result(0)
                                     :index==3?addflagprovider.value13Result(3):index==4?addflagprovider.value13Result(4):0;
 
 

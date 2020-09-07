@@ -213,7 +213,7 @@ class _loginScreenState extends State<loginScreen> {
                                     if(!doc.exists) {
                                       store.adduserfacebook(User(
                                           user.displayName, null, user.uid),
-                                          user.displayName);
+                                          user.uid);
                                     }
 
                                     Navigator.pushNamed(context, waitngWidget.id);
@@ -264,8 +264,6 @@ class _loginScreenState extends State<loginScreen> {
 
                                     final AuthResult authResult = await auth1.signInWithCredential(credential);
                                     final FirebaseUser user = authResult.user;
-
-
                                     assert(!user.isAnonymous);
                                     assert(await user.getIdToken() != null);
 
@@ -277,7 +275,7 @@ class _loginScreenState extends State<loginScreen> {
                                       if(!doc.exists) {
                                         store.adduserfacebook(User(
                                             user.displayName, null, user.uid),
-                                            user.displayName);
+                                            user.uid);
                                       }
                                       Navigator.pushNamed(context, home.id);
                                     }

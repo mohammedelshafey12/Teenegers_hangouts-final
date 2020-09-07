@@ -317,7 +317,6 @@ class _addflagState extends State<addflag> {
                             var user = Provider.of<FirebaseUser>(context,
                                 listen: false);
                             String placeaddress;
-
                             if (currentindex == 5) {
                               var time = DateTime.now();
                               if (ConnectionState.active != null) {
@@ -373,17 +372,27 @@ class _addflagState extends State<addflag> {
                                 currentindex == 2 &&
                                     question4 != null &&
                                     question5 != null &&
-                                    question6 != null ||
+                                    question6 != null&&
+                                    value4 != 0 &&
+                                    value5 != 0 &&
+                                    value6 != 0 ||
                                 currentindex == 3 &&
                                     question7 != null &&
                                     question8 != null &&
-                                    question9 != null ||
+                                    question9 != null &&
+                                    value7 != 0 &&
+                                    value8 != 0 &&
+                                    value9 != 0||
                                 currentindex == 4 &&
                                     question10 != null &&
                                     question11 != null &&
-                                    question12 != null ||
+                                    question12 != null &&
+                                    value10 != 0 &&
+                                    value11 != 0 &&
+                                    value12 != 0||
                                 currentindex == 5 &&
                                     question13 != null &&
+                            value13 != 0 &&
                                     imojeRate != null) {
                               if (currentindex == 0 &&
                                   lat != null &&

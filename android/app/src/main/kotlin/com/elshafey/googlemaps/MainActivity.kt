@@ -1,4 +1,4 @@
-package com.elshafey.googlemaps
+package com.elshafey.hangouts
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

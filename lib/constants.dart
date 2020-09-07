@@ -47,7 +47,7 @@ class constants {
   static const String Location = "Location";
   static const String username = "UserName";
   static const String age = "Age";
-  static const String kGoogleApiKey = "AIzaSyAF6GQ4a0pR8NdUQAfqg2gnEFfK98tbi5Y";
+  static const String kGoogleApiKey = "AIzaSyBxzppCAzieemv4N3YASDGt4NuhYyVS6sI";
   static const String score = "Score";
   static const String uid = "Uid";
   static const String time = "Time";
