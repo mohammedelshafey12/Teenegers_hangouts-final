@@ -11,6 +11,7 @@ class constants {
   static const orange = Color(0xffF2994A);
   static const graycolor = Color(0xff4F4F4F);
   static const String usercollection = "Users";
+  static const String pinMareker = "pinMarker";
   static const String Favouritecollection = "Favourite";
   static const String UserFavouritecollection = "UserFavourite";
   static const String IsFavourite = "isFavourite";
@@ -21,6 +22,8 @@ class constants {
   static const String ownerName = "OwnerName";
   static const String PlaceImage = "PlaceImage";
   static const String Question1 = "Question1";
+  static const String Age = "Age";
+  static const String Gender = "Gender";
   static const String Question2 = "Question2";
   static const String Question3 = "Question3";
   static const String Question4 = "Question4";

@@ -34,6 +34,8 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+  BitmapDescriptor pinmarker;
+  BitmapDescriptor marker;
   void _OnMapCreated(GoogleMapController controller) {
     googleMapController = controller;
     setState(() {
@@ -52,7 +54,7 @@ class _homeState extends State<home> {
   int currentindex = 0;
 
   double lat, long;
-  BitmapDescriptor markericon;
+
 
   static LatLng _initialPosition;
 
@@ -71,8 +73,21 @@ class _homeState extends State<home> {
 //  }
 
 
+
+// make sure to initialize before map loading
+
   @override
   void initState() {
+    BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(1, 1)),
+        'images/pinmarker.png')
+        .then((d) {
+      pinmarker = d;
+    });
+    BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(1, 1)),
+        'images/image2.png')
+        .then((d) {
+      marker = d;
+    });
     getUser();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (Provider.of<UserProvider>(context, listen: false).scores3 != 0&&Provider.of<UserProvider>(context, listen: false).scores3 != null) {
@@ -124,11 +139,7 @@ class _homeState extends State<home> {
     });
     // TODO: implement initState
     super.initState();
-    BitmapDescriptor.fromAssetImage(
-            ImageConfiguration(size: Size(48, 48)), 'custom_icons/marker.png')
-        .then((onValue) {
-      markericon = onValue;
-    });
+
     sharedpref();
   }
   getUser()async{
@@ -194,6 +205,7 @@ class _homeState extends State<home> {
                   double long = geoPoint.longitude;
                   LatLng latLng = LatLng(lat, long);
                   markers.add(Marker(
+                    icon: data[constants.pinMareker]==true?pinmarker:marker,
                     //make on tap on marker not window
                       infoWindow: InfoWindow(
                           title: data[constants.placeName],
@@ -204,11 +216,9 @@ class _homeState extends State<home> {
                                 isScrollControlled: true,
                                 context: context,
                                 builder: (builder) {
-
                                   return StreamBuilder(
                                       stream: store.MarkersCommentStream(
                                           doc.documentID.toString()
-
                                       ),
                                       builder: (context, snapshot) {
                                        if (snapshot.hasData) {
@@ -872,7 +882,7 @@ class _homeState extends State<home> {
                                             : clickable, //userprovider.addplace,
                                         child: Opacity(
                                           opacity:
-                                              counter == null ? 0 : counter,
+                                              counter == null ? 0 : counter==5?1:0,
                                           child: AvatarGlow(
                                             glowColor: Colors.black,
                                             endRadius: 49,
@@ -907,7 +917,7 @@ class _homeState extends State<home> {
                                     IgnorePointer(
                                       ignoring: true,
                                       child: Opacity(
-                                        opacity: counter == null ? 1 : counter==1?0:1,
+                                        opacity: counter == null ? 1 : counter==5?0:1,
                                         child: AvatarGlow(
                                           animate: userprovider.addplace == false
                                               ? true
@@ -916,7 +926,7 @@ class _homeState extends State<home> {
                                           glowColor: Colors.black,
                                           child: FloatingActionButton.extended(
                                             heroTag: 'btn2',
-                                            label: Text("Rank those Places"),
+                                            label: Text("Rank pin Places"),
                                             backgroundColor: Colors.black26,
                                           ),
                                         ),

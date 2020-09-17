@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:googlemaps/Provider/UserProvider.dart';
@@ -14,29 +13,28 @@ import 'package:provider/provider.dart';
 import 'package:googlemaps/Provider/AddFlagProvider.dart';
 
 void main() => runApp(MultiProvider(
-      providers: [
-        ChangeNotifierProvider<modelHud>(
-          create: (context) => modelHud(),
-        ),
-        ChangeNotifierProvider<Addflagprovider>(
-          create: (context) => Addflagprovider(),
-        ),
-        ChangeNotifierProvider<UserProvider>(
-          create: (context) => UserProvider(),
-        ),
+  providers: [
+    ChangeNotifierProvider<modelHud>(
+      create: (context) => modelHud(),
+    ),
+    ChangeNotifierProvider<Addflagprovider>(
+      create: (context) => Addflagprovider(),
+    ),
+    ChangeNotifierProvider<UserProvider>(
+      create: (context) => UserProvider(),
+    ),
 
-      ],
-      child: MaterialApp(
-        home: Phoenix(child: Splash_Screen()),
-        routes: {
-          introSlider.introid:(context)=>introSlider(),
-          Splash_Screen.id:(context)=>Splash_Screen(),
-          addflag.id: (context) => addflag(),
-          waitngWidget.id: (context) => waitngWidget(),
-          loginScreen.id: (context) => loginScreen(),
-          signup.id: (context) => signup(),
-          home.id: (context) => home()
-        },
-        debugShowCheckedModeBanner: false,
-      ),
-    ));
+  ],
+  child: MaterialApp(
+    home: Phoenix(child: Splash_Screen()),
+    routes: {
+      introSlider.introid:(context)=>introSlider(),
+      Splash_Screen.id:(context)=>Splash_Screen(),
+      addflag.id: (context) => addflag(),
+      waitngWidget.id: (context) => waitngWidget(),
+      loginScreen.id: (context) => loginScreen(),
+      signup.id: (context) => signup(),
+      home.id: (context) => home()
+    },
+  ),
+));

@@ -209,7 +209,7 @@ class _loginScreenState extends State<loginScreen> {
                                     userprovider.getaccesstoken(accessToken.token);
 
                                     final DocumentSnapshot doc =
-                                    await Firestore.instance.collection(constants.usercollection).document(accessToken.token).get();
+                                    await Firestore.instance.collection(constants.usercollection).document(user.uid).get();
                                     if(!doc.exists) {
                                       store.adduserfacebook(User(
                                           user.displayName, null, user.uid),

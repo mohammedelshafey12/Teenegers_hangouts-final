@@ -17,7 +17,8 @@ class Addflagprovider extends ChangeNotifier{
   String question11;
   String question12;
   String question13;
-
+  String age;
+  String gender;
   int value4;
   int value5;
   int value6;
@@ -226,6 +227,14 @@ class Addflagprovider extends ChangeNotifier{
   }
   question2Result(String questio){
     question2 = questio;
+    notifyListeners();
+  }
+  question1Age(String questio){
+    age = questio;
+    notifyListeners();
+  }
+  question2Gender(String questio){
+    gender = questio;
     notifyListeners();
   }
   imojeRate(String imojeindex){

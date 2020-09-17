@@ -58,6 +58,8 @@ class Store {
       constants.Value11:markerComments.Value11,
       constants.Value12:markerComments.Value12,
       constants.Value13:markerComments.Value13,
+      constants.Age:markerComments.Age,
+      constants.Gender:markerComments.Gender
 
     });
   }
@@ -89,7 +91,8 @@ class Store {
       constants.Value11:markerComments.Value11,
       constants.Value12:markerComments.Value12,
       constants.Value13:markerComments.Value13,
-
+      constants.Age:markerComments.Age,
+      constants.Gender:markerComments.Gender
     });
   }
 

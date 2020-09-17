@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:googlemaps/Provider/UserProvider.dart';
 import 'package:googlemaps/Screens/QuestionsImojeSlider.dart';
 import 'package:googlemaps/Screens/waitingWidget.dart';
+import 'package:googlemaps/Widgets/GenderAndAge.dart';
 import 'package:googlemaps/Widgets/add_location_widget.dart';
 import 'package:googlemaps/Widgets/getLocationRateImoje.dart';
 import 'package:googlemaps/Widgets/getQuestions.dart';
@@ -34,6 +35,13 @@ class _addQuestionsState extends State<addQuestions> {
     currentindex = 0;
 
 getUser();
+sharedpref();
+  }
+  double counter;
+
+  sharedpref() async {
+    final prefs = await SharedPreferences.getInstance();
+    counter = prefs.getDouble('counter') ?? 0;
   }
   getUser()async{
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
@@ -99,7 +107,7 @@ getUser();
                             height: height * 0.025,
                             width: width * 0.8,
                             child: StepProgressIndicator(
-                              totalSteps: 5,
+                              totalSteps: 6,
                               currentStep: value,
                               size: 25,
                               padding: 0,
@@ -182,8 +190,11 @@ getUser();
                               QuestionsImojeSlider(height: height,width: width,Question1:'I Feel accepted?' ,
                                 Question2:'There is a lot of recreational opportunities here?',
                                 Question3: 'I can see and interact  with other teens easily? ',pagenumber: 3,),
-                              getLocationRateImoje(width: width, height: height,question13: 'I have a lot of different activities  in this place',),
-
+                              getLocationRateImoje(width: width, height: height,question13: 'I can do different activities in this place?',),
+                              GenderAndAge(width: width,height: height,question1: "What is Your Age?",answer1: "13-14",
+                                answer2: "15-16",answer3: "16-17",answer4:"18-19" ,question2: "What is Your Gender?",
+                                answer5: "Male",answer6: "Female",
+                              )
                             ],
                           ),
                         ),
@@ -229,13 +240,14 @@ getUser();
                               double lat = Provider.of<Addflagprovider>(context,listen: false).lat;
                               double long = Provider.of<Addflagprovider>(context,listen: false).lang;
                               var user = Provider.of<FirebaseUser>(context,listen: false);
-
-                              if(currentindex==4){
+                              String Age = Provider.of<Addflagprovider>(context,listen: false).age;
+                              String Gender = Provider.of<Addflagprovider>(context,listen: false).gender;
+                              if(currentindex==5){
                                 var time  = DateTime.now();
                                 if (ConnectionState.active != null){
                                   store.addMarkerComment(widget.docid, MarkerComments(user.uid, question1, question2, time,question3,question4,question5
                                       ,question6,question7,question8,question9,question10,question11,question12,question13,imojeRate,value4
-                                      ,value5,value6,value7,value8,value9,value10,value11,value12,value13));
+                                      ,value5,value6,value7,value8,value9,value10,value11,value12,value13,Age,Gender));
                                   Provider.of<UserProvider>(context,listen: false).setScores((value*10));
                                   store.updateScore(user1.uid, (value*10));
                                   controller.dispose();
@@ -255,7 +267,7 @@ getUser();
                                 ||currentindex==3&&question10!=null&&question11!=null&&question12!=null&&value10!=0&&value11!=0&&value12!=0||currentindex==4&&question13!=null&&imojeRate!=null&&value13!=0)  {
                               setState(() {
                                 currentindex++;
-                                if (value < 5) {
+                                if (value < 6) {
                                   value++;
                                 }
 
@@ -270,7 +282,7 @@ getUser();
                             },
                             child: Center(
                               child: Text(
-                                currentindex == 4 ? "Finish" : "Next",
+                                currentindex == 5 ? "Finish" : "Next",
                                 style: TextStyle(fontFamily: 'font'),
                               ),
                             ),
@@ -290,8 +302,13 @@ getUser();
     final prefs = await SharedPreferences.getInstance();
 
 // set value
-    prefs.setDouble('counter', 1);
+
+  if (counter!=5){
+    prefs.setDouble('counter', counter+1);
+    print("couuuuuuuuuuuuuuuuuunter${counter}");
     prefs.setBool('clickable', false);
+  }
+
   }
 
 

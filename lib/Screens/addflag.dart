@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:googlemaps/Provider/UserProvider.dart';
 import 'package:googlemaps/Screens/waitingWidget.dart';
+import 'package:googlemaps/Widgets/GenderAndAge.dart';
 import 'package:googlemaps/Widgets/add_location_widget.dart';
 import 'package:googlemaps/Widgets/getLocationRateImoje.dart';
 import 'package:googlemaps/Widgets/getQuestions.dart';
@@ -31,6 +32,18 @@ class _addflagState extends State<addflag> {
 
   PageController controller = PageController(initialPage: currentindex);
   var scrolldirection = Axis.horizontal;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    sharedpref();
+  }
+  double counter;
+
+  sharedpref() async {
+    final prefs = await SharedPreferences.getInstance();
+    counter = prefs.getDouble('counter') ?? 0;
+  }
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -88,7 +101,7 @@ class _addflagState extends State<addflag> {
                               height: height * 0.025,
                               width: width * 0.8,
                               child: StepProgressIndicator(
-                                totalSteps: 5,
+                                totalSteps: 6,
                                 currentStep: value,
                                 size: 25,
                                 padding: 0,
@@ -199,8 +212,12 @@ class _addflagState extends State<addflag> {
                                   width: width,
                                   height: height,
                                   question13:
-                                      'I have a lot of different activities  in this place',
+                                      'I can do different activities in this place?',
                                 ),
+                                GenderAndAge(width: width,height: height,question1: "What is Your Age?",answer1: "13-14",
+                                answer2: "15-16",answer3: "16-17",answer4:"18-19" ,question2: "What is Your Gender?",
+                                answer5: "Male",answer6: "Female",
+                                )
                               ],
                             ),
                           ),
@@ -316,8 +333,10 @@ class _addflagState extends State<addflag> {
                                 .lang;
                             var user = Provider.of<FirebaseUser>(context,
                                 listen: false);
+                            String Age = Provider.of<Addflagprovider>(context,listen: false).age;
+                            String Gender = Provider.of<Addflagprovider>(context,listen: false).gender;
                             String placeaddress;
-                            if (currentindex == 5) {
+                            if (currentindex == 6) {
                               var time = DateTime.now();
                               if (ConnectionState.active != null) {
                                 store.addNarker(
@@ -348,7 +367,8 @@ class _addflagState extends State<addflag> {
                                         value10,
                                         value11,
                                         value12,
-                                        value13));
+                                        value13,Age
+                                    ,Gender));
                                 store.updateScore(
                                     user.uid,
                                         (value * 10));
@@ -430,7 +450,7 @@ class _addflagState extends State<addflag> {
                               }
                               setState(() {
                                 currentindex++;
-                                if (value < 5) {
+                                if (value < 6) {
                                   value++;
                                 }
                               });
@@ -455,7 +475,7 @@ class _addflagState extends State<addflag> {
                           },
                           child: Center(
                             child: Text(
-                              currentindex == 5 ? "Finish" : "Next",
+                              currentindex == 6 ? "Finish" : "Next",
                               style: TextStyle(fontFamily: 'font'),
                             ),
                           ),
@@ -475,7 +495,10 @@ class _addflagState extends State<addflag> {
     final prefs = await SharedPreferences.getInstance();
 
 // set value
-    prefs.setDouble('counter', 1);
-    prefs.setBool('clickable', false);
+    if (counter!=5){
+      prefs.setDouble('counter', counter+1);
+      prefs.setBool('clickable', false);
+    }
+
   }
 }

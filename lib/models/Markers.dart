@@ -39,12 +39,15 @@ class Markers {
 
    String PlaceRate;
    var time;
+   String Age;
+   String Gender;
 
    MarkerComments(this.owneruid, this.Question1, this.Question2,this.time,this.Question3,
        this.Question4, this.Question5, this.Question6, this.Question7,
        this.Question8, this.Question9, this.Question10, this.Question11,
        this.Question12, this.Question13, this.PlaceRate,this.Value4,this.Value5
        ,this.Value6,this.Value7,this.Value8,this.Value9,this.Value10,this.Value11,this.Value12,this.Value13
+       ,this.Age,this.Gender
      );
 
 

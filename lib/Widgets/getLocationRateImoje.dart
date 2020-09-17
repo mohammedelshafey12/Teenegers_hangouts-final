@@ -23,8 +23,6 @@ class getLocationRateImoje extends StatefulWidget {
 
 class _getLocationRateImojeState extends State<getLocationRateImoje> {
   int imojecurrentindex1 = 0;
-
-
   @override
   Widget build(BuildContext context) {
     final addflagprovider = Provider.of<Addflagprovider>(context);
@@ -105,7 +103,7 @@ class _getLocationRateImojeState extends State<getLocationRateImoje> {
             flex: 1,
             child: Container(
               decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(color: Colors.grey))
+              border: Border(bottom: BorderSide(color: Colors.grey))
               ),
               child: Center(
                 child:Container(
@@ -118,21 +116,13 @@ class _getLocationRateImojeState extends State<getLocationRateImoje> {
                             fontFamily: 'font'
                         ),softWrap: true,maxLines: 1,
                           maxFontSize: 12,
-
                           minFontSize: 8,),
                       ),
                       Container(
-
                         child: ReviewSlider(
-
-
-
                             onChange: (index) {
-
                                 index==0?addflagprovider.imojeRate("Very Bad"):index==1?addflagprovider.imojeRate("Bad"):index==2?addflagprovider.imojeRate("Okay")
                                     :index==3?addflagprovider.imojeRate("Good"):index==4?addflagprovider.imojeRate("Great"):"";
-
-
                             }),
                       ),
                     ],
