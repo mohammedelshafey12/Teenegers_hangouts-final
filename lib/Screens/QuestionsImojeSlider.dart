@@ -93,24 +93,86 @@ class _getQuestionsState extends State<QuestionsImojeSlider> {
 
                                   options: ['Strongly disagree','Disagree','none','agree','Strongly agree'],
                                   onChange: (index) {
-                                    if (widget.pagenumber==1){
-                                      index==0?addflagprovider.question4Result("Strongly disagree"):index==1?addflagprovider.question4Result("Disagree"):index==2?addflagprovider.question4Result("none")
-                                          :index==3?addflagprovider.question4Result("agree"):index==4?addflagprovider.question4Result("Strongly agree"):"";
-                                      index==0?addflagprovider.value4Result(1):index==1?addflagprovider.value4Result(2):index==2?addflagprovider.value4Result(0)
-                                          :index==3?addflagprovider.value4Result(3):index==4?addflagprovider.value4Result(4):0;
-                                    }else if (widget.pagenumber==2){
-                                      index==0?addflagprovider.question7Result('Strongly disagree'):index==1?addflagprovider.question7Result("Disagree"):index==2?addflagprovider.question7Result("none")
-                                          :index==3?addflagprovider.question7Result("agree"):index==4?addflagprovider.question7Result("Strongly agree"):"";
-                                      index==0?addflagprovider.value7Result(1):index==1?addflagprovider.value7Result(2):index==2?addflagprovider.value7Result(0)
-                                          :index==3?addflagprovider.value7Result(3):index==4?addflagprovider.value7Result(4):0;
-                                    }else if (widget.pagenumber==3){
-                                      index==0?addflagprovider.question10Result("Strongly disagree"):index==1?addflagprovider.question10Result("Disagree"):index==2?addflagprovider.question10Result("none")
-                                          :index==3?addflagprovider.question10Result("agree"):index==4?addflagprovider.question10Result("Strongly agree"):"";
-                                      index==0?addflagprovider.value10Result(1):index==1?addflagprovider.value10Result(2):index==2?addflagprovider.value10Result(0)
-                                          :index==3?addflagprovider.value10Result(3):index==4?addflagprovider.value10Result(4):0;
+                                    if (widget.pagenumber == 1) {
+                                      index == 0
+                                          ? addflagprovider.question4Result(
+                                          "Strongly disagree")
+                                          : index == 1
+                                          ? addflagprovider.question4Result(
+                                          "Disagree")
+                                          : index == 2 ? addflagprovider
+                                          .question4Result("none")
+                                          : index == 3 ? addflagprovider
+                                          .question4Result("agree") : index == 4
+                                          ? addflagprovider.question4Result(
+                                          "Strongly agree")
+                                          : "";
+                                      index == 0 ? addflagprovider.value4Result(
+                                          1) : index == 1 ? addflagprovider
+                                          .value4Result(2) : index == 2
+                                          ? addflagprovider.value4Result(0)
+                                          : index == 3 ? addflagprovider
+                                          .value4Result(3) : index == 4
+                                          ? addflagprovider.value4Result(4)
+                                          : 0;
+                                    } else if (widget.pagenumber == 2) {
+                                      index == 0
+                                          ? addflagprovider.question7Result(
+                                          'Strongly disagree')
+                                          : index == 1
+                                          ? addflagprovider.question7Result(
+                                          "Disagree")
+                                          : index == 2 ? addflagprovider
+                                          .question7Result("none")
+                                          : index == 3 ? addflagprovider
+                                          .question7Result("agree") : index == 4
+                                          ? addflagprovider.question7Result(
+                                          "Strongly agree")
+                                          : "";
+                                      index == 0 ? addflagprovider.value7Result(
+                                          1) : index == 1 ? addflagprovider
+                                          .value7Result(2) : index == 2
+                                          ? addflagprovider.value7Result(0)
+                                          : index == 3 ? addflagprovider
+                                          .value7Result(3) : index == 4
+                                          ? addflagprovider.value7Result(4)
+                                          : 0;
+                                    } else if (widget.pagenumber == 3) {
+                                      index == 0
+                                          ? addflagprovider.question10Result(
+                                          "Strongly disagree")
+                                          : index == 1
+                                          ? addflagprovider.question10Result(
+                                          "Disagree")
+                                          : index == 2 ? addflagprovider
+                                          .question10Result("none")
+                                          : index == 3 ? addflagprovider
+                                          .question10Result("agree") : index ==
+                                          4 ? addflagprovider.question10Result(
+                                          "Strongly agree") : "";
+                                      index == 0 ? addflagprovider
+                                          .value10Result(1) : index == 1
+                                          ? addflagprovider.value10Result(2)
+                                          : index == 2 ? addflagprovider
+                                          .value10Result(0)
+                                          : index == 3 ? addflagprovider
+                                          .value10Result(3) : index == 4
+                                          ? addflagprovider.value10Result(4)
+                                          : 0;
+                                    } else if (widget.pagenumber == 4) {
+                                      index == 0
+                                          ? addflagprovider.question15Result(
+                                          'Strongly disagree')
+                                          : index == 1
+                                          ? addflagprovider.question15Result(
+                                          "Disagree")
+                                          : index == 2 ? addflagprovider
+                                          .question15Result("none")
+                                          : index == 3 ? addflagprovider
+                                          .question15Result("agree") : index ==
+                                          4 ? addflagprovider.question15Result(
+                                          "Strongly agree") : "";
                                     }
-
-
                                   }),
                             ),
                           ],
@@ -156,6 +218,19 @@ class _getQuestionsState extends State<QuestionsImojeSlider> {
                                           :index==3?addflagprovider.question11Result("agree"):index==4?addflagprovider.question11Result("Strongly agree"):"";
                                       index==0?addflagprovider.value11Result(1):index==1?addflagprovider.value11Result(2):index==2?addflagprovider.value11Result(0)
                                           :index==3?addflagprovider.value11Result(3):index==4?addflagprovider.value11Result(4):0;
+                                    }else if (widget.pagenumber == 4) {
+                                      index == 0
+                                          ? addflagprovider.question16Result(
+                                          'Strongly disagree')
+                                          : index == 1
+                                          ? addflagprovider.question16Result(
+                                          "Disagree")
+                                          : index == 2 ? addflagprovider
+                                          .question16Result("none")
+                                          : index == 3 ? addflagprovider
+                                          .question16Result("agree") : index ==
+                                          4 ? addflagprovider.question16Result(
+                                          "Strongly agree") : "";
                                     }
                                   }),
                             ),
@@ -200,6 +275,19 @@ class _getQuestionsState extends State<QuestionsImojeSlider> {
                                           :index==3?addflagprovider.question12Result("agree"):index==4?addflagprovider.question12Result("Strongly agree"):"";
                                       index==0?addflagprovider.value12Result(1):index==1?addflagprovider.value12Result(2):index==2?addflagprovider.value12Result(0)
                                           :index==3?addflagprovider.value12Result(3):index==4?addflagprovider.value12Result(4):0;
+                                    }else if (widget.pagenumber == 4) {
+                                      index == 0
+                                          ? addflagprovider.question17Result(
+                                          'Strongly disagree')
+                                          : index == 1
+                                          ? addflagprovider.question17Result(
+                                          "Disagree")
+                                          : index == 2 ? addflagprovider
+                                          .question17Result("none")
+                                          : index == 3 ? addflagprovider
+                                          .question17Result("agree") : index ==
+                                          4 ? addflagprovider.question17Result(
+                                          "Strongly agree") : "";
                                     }
                                   }),
                             ),

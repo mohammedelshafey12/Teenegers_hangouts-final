@@ -1,8 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:googlemaps/Provider/UserProvider.dart';
+import 'package:googlemaps/Screens/get2Questions.dart';
 import 'package:googlemaps/Screens/waitingWidget.dart';
 import 'package:googlemaps/Widgets/GenderAndAge.dart';
 import 'package:googlemaps/Widgets/add_location_widget.dart';
@@ -101,7 +103,7 @@ class _addflagState extends State<addflag> {
                               height: height * 0.025,
                               width: width * 0.8,
                               child: StepProgressIndicator(
-                                totalSteps: 6,
+                                totalSteps: 10,
                                 currentStep: value,
                                 size: 25,
                                 padding: 0,
@@ -179,6 +181,7 @@ class _addflagState extends State<addflag> {
                                   answer11: "Alone ",
                                   answer12: "others",
                                 ),
+
                                 QuestionsImojeSlider(
                                   height: height,
                                   width: width,
@@ -201,7 +204,7 @@ class _addflagState extends State<addflag> {
                                 QuestionsImojeSlider(
                                   height: height,
                                   width: width,
-                                  Question1: 'I Feel accepted?',
+                                  Question1: 'I Feel accepted and welcomed ?',
                                   Question2:
                                       'There is a lot of recreational opportunities here?',
                                   Question3:
@@ -212,7 +215,16 @@ class _addflagState extends State<addflag> {
                                   width: width,
                                   height: height,
                                   question13:
-                                      'I can do different activities in this place?',
+                                  'I can do different activities in this place?',
+                                ),
+                                QuestionsImojeSlider(height: height,width: width,Question1:'Teens in this place interest in new experiences and thrill-seeking?' ,
+                                  Question2:'Teens sometimes cause troubles/negative behaviours in this place?',
+                                  Question3: 'No places are available for the Teens and their activities in public spaces? ',pagenumber: 4,),
+
+                                get2Questions(width: width, height: height,question1: "What are the behaviours you dislike (or disapprove of) that happen in this place?",
+                                  answer1: "Fights",answer2: "drugs",answer3: "smoking",answer4: "drinking alcohol",question2: "Have you or any of your friends been a victim of any of the following in or near this place?",
+                                  answer5: "•Suffered from teens having physical fights",answer6: "•Been robbed in the street",
+                                  answer7: "•Been physically assaulted or wounded",answer8: "•Been sexually harassed (verbal or physical)",
                                 ),
                                 GenderAndAge(width: width,height: height,question1: "What is Your Age?",answer1: "13-14",
                                 answer2: "15-16",answer3: "16-17",answer4:"18-19" ,question2: "What is Your Gender?",
@@ -239,6 +251,7 @@ class _addflagState extends State<addflag> {
                                     context,
                                     listen: false)
                                 .adress1;
+                            String Question151617Justify;
                             String imojeRate = Provider.of<Addflagprovider>(
                                     context,
                                     listen: false)
@@ -251,6 +264,8 @@ class _addflagState extends State<addflag> {
                                     context,
                                     listen: false)
                                 .question2;
+                            String question18 = Provider.of<Addflagprovider>(context,listen: false).question18;
+                            String question19 = Provider.of<Addflagprovider>(context,listen: false).question19;
                             String question3 = Provider.of<Addflagprovider>(
                                     context,
                                     listen: false)
@@ -295,6 +310,18 @@ class _addflagState extends State<addflag> {
                                     context,
                                     listen: false)
                                 .question13;
+                            String question15 = Provider.of<Addflagprovider>(
+                                context,
+                                listen: false)
+                                .question15;
+                            String question16 = Provider.of<Addflagprovider>(
+                                context,
+                                listen: false)
+                                .question16;
+                            String question17 = Provider.of<Addflagprovider>(
+                                context,
+                                listen: false)
+                                .question17;
                             int value4 = Provider.of<Addflagprovider>(context,
                                     listen: false)
                                 .value4;
@@ -335,8 +362,11 @@ class _addflagState extends State<addflag> {
                                 listen: false);
                             String Age = Provider.of<Addflagprovider>(context,listen: false).age;
                             String Gender = Provider.of<Addflagprovider>(context,listen: false).gender;
+                            String Question1Justifyprovider = Provider.of<Addflagprovider>(context,listen: false).question1Justify;
+                            String Question151617Justifyprovider = Provider.of<Addflagprovider>(context,listen: false).question151617Justify;
                             String placeaddress;
-                            if (currentindex == 6) {
+                            String Question1Justify ;
+                            if (currentindex == 8) {
                               var time = DateTime.now();
                               if (ConnectionState.active != null) {
                                 store.addNarker(
@@ -357,6 +387,11 @@ class _addflagState extends State<addflag> {
                                         question11,
                                         question12,
                                         question13,
+                                        question15,
+                                        question16,
+                                        question17,
+                                        question18,
+                                        question19,
                                         imojeRate,
                                         value4,
                                         value5,
@@ -368,7 +403,7 @@ class _addflagState extends State<addflag> {
                                         value11,
                                         value12,
                                         value13,Age
-                                    ,Gender));
+                                    ,Gender),Question1Justifyprovider,Question151617Justifyprovider);
                                 store.updateScore(
                                     user.uid,
                                         (value * 10));
@@ -413,7 +448,75 @@ class _addflagState extends State<addflag> {
                                 currentindex == 5 &&
                                     question13 != null &&
                             value13 != 0 &&
-                                    imojeRate != null) {
+                                    imojeRate != null||currentindex==6||currentindex==7||currentindex==8) {
+                              if (currentindex == 5) {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      content: TextField(
+                                        onChanged: (str) {
+                                          setState(() {
+                                            Question151617Justify = str;
+                                          });
+                                        },
+                                      ),
+                                      title: AutoSizeText(
+                                        'Specify For Questions!',
+                                        maxLines: 1,
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                            onPressed: () {
+                                              // print(Question1Justify);
+                                              if (Question151617Justify != null) {
+                                                addflagprovider.Question151617Justify(
+                                                    Question151617Justify);
+                                                Navigator.pop(context);
+                                              }
+                                            },
+                                            child: Text('Ok')),
+                                        FlatButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text('Skip'))
+                                      ],
+                                    ));
+                              }
+                              if (currentindex == 0) {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      content: TextField(
+                                        onChanged: (str) {
+                                          setState(() {
+                                            Question1Justify = str;
+                                          });
+                                        },
+                                      ),
+                                      title: AutoSizeText(
+                                        'If There Others You Can Do There Specify!',
+                                        maxLines: 1,
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                            onPressed: () {
+                                              print(Question1Justify);
+                                              if (Question1Justify != null) {
+                                                addflagprovider.Question1Justify(
+                                                    Question1Justify);
+                                                Navigator.pop(context);
+                                              }
+                                            },
+                                            child: Text('Ok')),
+                                        FlatButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text('Skip'))
+                                      ],
+                                    ));
+                              }
                               if (currentindex == 0 &&
                                   lat != null &&
                                   long != null) {
@@ -450,7 +553,7 @@ class _addflagState extends State<addflag> {
                               }
                               setState(() {
                                 currentindex++;
-                                if (value < 6) {
+                                if (value < 9) {
                                   value++;
                                 }
                               });
@@ -475,7 +578,7 @@ class _addflagState extends State<addflag> {
                           },
                           child: Center(
                             child: Text(
-                              currentindex == 6 ? "Finish" : "Next",
+                              currentindex == 8 ? "Finish" : "Next",
                               style: TextStyle(fontFamily: 'font'),
                             ),
                           ),

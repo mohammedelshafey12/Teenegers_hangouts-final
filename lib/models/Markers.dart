@@ -24,6 +24,11 @@ class Markers {
    String Question11;
    String Question12;
    String Question13;
+   String Question15;
+   String Question16;
+   String Question17;
+   String Question18;
+   String Question19;
    int Value4;
    int Value5;
    int Value6;
@@ -45,7 +50,9 @@ class Markers {
    MarkerComments(this.owneruid, this.Question1, this.Question2,this.time,this.Question3,
        this.Question4, this.Question5, this.Question6, this.Question7,
        this.Question8, this.Question9, this.Question10, this.Question11,
-       this.Question12, this.Question13, this.PlaceRate,this.Value4,this.Value5
+       this.Question12, this.Question13,this.Question15,this.Question16,this.Question17,
+       this.Question18,this.Question19,
+       this.PlaceRate,this.Value4,this.Value5
        ,this.Value6,this.Value7,this.Value8,this.Value9,this.Value10,this.Value11,this.Value12,this.Value13
        ,this.Age,this.Gender
      );

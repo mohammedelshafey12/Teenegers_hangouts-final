@@ -1,11 +1,9 @@
 import 'dart:collection';
-import 'dart:io';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -882,7 +880,7 @@ class _homeState extends State<home> {
                                             : clickable, //userprovider.addplace,
                                         child: Opacity(
                                           opacity:
-                                              counter == null ? 0 : counter==5?1:0,
+                                              counter == null ? 0 : counter==2?1:0,
                                           child: AvatarGlow(
                                             glowColor: Colors.black,
                                             endRadius: 49,
@@ -917,7 +915,7 @@ class _homeState extends State<home> {
                                     IgnorePointer(
                                       ignoring: true,
                                       child: Opacity(
-                                        opacity: counter == null ? 1 : counter==5?0:1,
+                                        opacity: counter == null ? 1 : counter==2?0:1,
                                         child: AvatarGlow(
                                           animate: userprovider.addplace == false
                                               ? true
