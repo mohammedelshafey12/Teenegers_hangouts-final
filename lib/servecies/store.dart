@@ -152,6 +152,11 @@ class Store {
         .collection(constants.Markerscollection).document(documentId).collection(constants.MarkersCommentscollection).orderBy(constants.time)
         .snapshots();
   }
+  Stream<QuerySnapshot> MarkersCommentStreamtocount() {
+    return firestore
+        .collection(constants.Markerscollection).document().collection(constants.MarkersCommentscollection).orderBy(constants.time)
+        .snapshots();
+  }
   Stream<QuerySnapshot> MarkersStream() {
 
     return firestore
@@ -159,7 +164,6 @@ class Store {
         .snapshots();
   }
   Stream<QuerySnapshot> MarkersStreamFav(String placeName) {
-
     return firestore
         .collection(constants.Markerscollection).where(constants.placeName,isEqualTo: placeName)
         .snapshots();

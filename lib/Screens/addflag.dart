@@ -89,7 +89,7 @@ class _addflagState extends State<addflag> {
                       color: constants.blackcolor),
                 ),
               ),
-              body: ListView(
+              body: Column(
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: height * 0.03),
@@ -483,7 +483,7 @@ class _addflagState extends State<addflag> {
                                       ],
                                     ));
                               }
-                              if (currentindex == 0) {
+                              if (currentindex == 1) {
                                 showDialog(
                                     context: context,
                                     builder: (context) => AlertDialog(
@@ -495,7 +495,7 @@ class _addflagState extends State<addflag> {
                                         },
                                       ),
                                       title: AutoSizeText(
-                                        'If There Others You Can Do There Specify!',
+                                        'Add Any Other Comments..',
                                         maxLines: 1,
                                       ),
                                       actions: <Widget>[

@@ -875,12 +875,15 @@ class _homeState extends State<home> {
                                 child: Row(
                                   children: <Widget>[
                                      IgnorePointer(
-                                        ignoring: clickable == null
-                                            ? true
-                                            : clickable, //userprovider.addplace,
+                                       ignoring: false,
+//                                        ignoring: clickable == null
+//                                            ? true
+//                                            : clickable, //userprovider.addplace,
+
                                         child: Opacity(
                                           opacity:
-                                              counter == null ? 0 : counter==2?1:0,
+//                                              counter == null ? 0 : counter==2?1:0,
+                                                 1,
                                           child: AvatarGlow(
                                             glowColor: Colors.black,
                                             endRadius: 49,

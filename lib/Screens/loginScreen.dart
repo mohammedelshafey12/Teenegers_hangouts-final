@@ -30,25 +30,15 @@ class loginScreen extends StatefulWidget {
 
 class _loginScreenState extends State<loginScreen> {
   final _auth = Auth();
-
   final auth1  = FirebaseAuth.instance;
-
   String _email, _password;
-
-
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
-
   FacebookLogin facebookLogin = FacebookLogin();
   Future<FirebaseUser> getUser() async {
     return await auth1.currentUser();
   }
-
-
-
   @override
   Widget build(BuildContext context) {
-
-
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Material(
@@ -61,11 +51,11 @@ class _loginScreenState extends State<loginScreen> {
             child: Stack(
               children: <Widget>[
                 SvgPicture.asset(
+
                   constants.backgoungimage,
                   fit: BoxFit.cover,
                   width: width,
-                  height: height,
-                ),
+                  height: height),
                 Center(
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),

@@ -58,7 +58,7 @@ class _add_location_widgetState extends State<add_location_widget> {
                     context: context,
                     apiKey: constants.kGoogleApiKey,
                     mode: Mode
-                        .overlay, // Mode.fullscreen
+                        .fullscreen, // Mode.fullscreen
                     language: "Ar",
                     onError: (e) {
                       print(
@@ -116,6 +116,9 @@ class _add_location_widgetState extends State<add_location_widget> {
           ),
           Expanded(
             child: GoogleMap(
+//              scrollGesturesEnabled: true,
+//              zoomGesturesEnabled: true,
+//              zoomControlsEnabled: true,
               markers: Set.from(markers),
               mapType: MapType.normal,
               onMapCreated: _OnMapCreated,
