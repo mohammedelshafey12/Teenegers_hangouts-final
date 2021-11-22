@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:googlemaps/Screens/home.dart';
 import 'package:googlemaps/Screens/loginScreen.dart';
-import 'package:googlemaps/count.dart';
+//import 'package:googlemaps/count.dart';
 import 'package:provider/provider.dart';
 class waitngWidget extends StatefulWidget {
   static String id  = 'waitingwidget';
@@ -21,7 +21,7 @@ class _waitngWidgetState extends State<waitngWidget> {
        child: Builder(
          builder: (context)=>
           Material(
-         child: Provider.of<FirebaseUser>(context)==null? loginScreen():count(),
+         child: Provider.of<FirebaseUser>(context)==null? loginScreen():home(),
      ),
        ),
      );

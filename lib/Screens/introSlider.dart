@@ -41,6 +41,19 @@ class _introSliderState extends State<introSlider> {
                 IntroSliderItem(firstTitle:"Find",secondTitle: "Find top- favourite places and hangout spots, wherever you are ",imageUrl: "images/intro2.svg",),
                 IntroSliderItem(firstTitle:"Decide",secondTitle: "Decide on the best places to go with reviews, ratings, and pictures ",imageUrl: "images/intro3.svg",),
                 IntroSliderItem(firstTitle:"Help",secondTitle: "Help other teens to discover the best places by sharing reviews, photos and more",imageUrl: "images/intro4.svg",),
+                IntroSliderItem(
+                  firstTitle: "",
+                  secondTitle:
+                  "By clicking agree that’s mean you agree to take part in this survey and it may  be used for research purposes\n\n"
+                      " - If you don’t want to continue press skip\n\n"
+                      "If you are under 18 Make sure that you use this app  under your"
+                      "guardian supervision",
+                  imageUrl: "images/intro5.svg",
+                ),
+               //  IntroSliderItem(firstTitle:"Agree?",secondTitle: "By clicking agree that’s mean you agree to take part in this survey and it may  be used for research purposes"
+               //      '- If you don’t want to continue press skip'
+               // ' If you are under 18 Make sure that you use this app  under your'
+               //  'guardian supervision',imageUrl: "images/intro5.svg",),
               ],
             ),
             Positioned(
@@ -48,7 +61,7 @@ class _introSliderState extends State<introSlider> {
               left: width*0.2,
               right: width*0.2,
               child: new DotsIndicator(
-                dotsCount: 4,
+                dotsCount: 5,
                 position:currentindexdots,
                 decorator: DotsDecorator(
                   size: const Size.square(9.0),
@@ -63,25 +76,56 @@ class _introSliderState extends State<introSlider> {
               left: width*0.2,
               right: width*0.2,
               child: Center(
-                child: Container(
-                  width: width * 0.7,
-                  height: height * 0.06,
-                  child: FlatButton(child: Text(currentindex==3?"Finish":"Next",style: TextStyle(fontFamily: 'font'),),color: constants.primarycolor
-
-                  ,shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),onPressed: (){
-                    if (currentindex<3&&currentindexdots<3){
-                      setState(() {
-                        currentindex++;
-                        currentindexdots++;
-                      });
-                      controller.animateToPage(currentindex, duration: Duration(milliseconds: 200), curve: Curves.easeInCubic);
-                    }else{
-                      ShowIntroCounter();
-                      Navigator.pushNamed(context, waitngWidget.id);
-                    }
-                    }
+                child: Column(
+                  children: [
+                    Container(
+                      width: width * 0.7,
+                      height: height * 0.06,
+                      child: FlatButton(child: Text(currentindex==4?"Agree":"Next",style: TextStyle(fontFamily: 'font'),),color: constants.primarycolor
+                      ,shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),onPressed: (){
+                        if (currentindex<4&&currentindexdots<4){
+                          setState(() {
+                            currentindex++;
+                            currentindexdots++;
+                          });
+                          controller.animateToPage(currentindex, duration: Duration(milliseconds: 200), curve: Curves.easeInCubic);
+                        }else{
+                          ShowIntroCounter();
+                          Navigator.pushNamed(context, waitngWidget.id);
+                        }
+                        }
+                        ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    currentindex == 4 ? Container(
+                      width: width * 0.7,
+                      height: height * 0.06,
+                      child: FlatButton(
+                          child: Text(
+                            currentindex == 4 ? "Skip" : "Next",
+                            style: TextStyle(fontFamily: 'font'),
+                          ),
+                          color: Colors.grey,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          onPressed: () {
+                            if (currentindex < 4 && currentindexdots < 4) {
+                              setState(() {
+                                currentindex++;
+                                currentindexdots++;
+                              });
+                              controller.animateToPage(currentindex,
+                                  duration: Duration(milliseconds: 200),
+                                  curve: Curves.easeInCubic);
+                            } else {
+                              Navigator.pushNamed(context, waitngWidget.id);
+                            }
+                          }),
+                    ):Container(),
+                  ],
                 ),
               )),
 
